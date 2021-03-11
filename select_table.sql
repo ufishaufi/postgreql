@@ -48,7 +48,24 @@ IN
 
 SELECT * FROM person WHERE country_of_birth IN ('China', 'Brazil', 'France');
 
+BETWEEN
 
+SELECT * FROM person WHERE date_of_birth BETWEEN DATE '2000-01-01' AND '2015-01-01';
 
+LIKE, ILIKE, NOT LIKE, NOT ILIKE
 
+SELECT * FROM person WHERE email LIKE '%.com';
+SELECT * FROM person WHERE email LIKE '%@google.%';
 
+SELECT * FROM person WHERE country_of_birth ILIKE '%p';
+
+SELECT * FROM person WHERE email NOT LIKE '%.com';
+
+SELECT * FROM person WHERE country_of_birth NOT ILIKE '%p';
+
+GROUP BY
+
+SELECT country_of_birth FROM person GROUP BY country_of_birth;
+SELECT country_of_birth, COUNT(*) FROM person GROUP BY country_of_birth;
+SELECT country_of_birth, COUNT(*) FROM person GROUP BY country_of_birth ORDER BY country_of_birth;
+SELECT country_of_birth, COUNT(*) FROM person GROUP BY country_of_birth HAVING COUNT(*) > 5 ORDER BY country_of_birth; 
