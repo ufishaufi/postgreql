@@ -72,3 +72,38 @@ SELECT country_of_birth, COUNT(*) FROM person GROUP BY country_of_birth ORDER BY
 GROUP BY HAVING
 
 SELECT country_of_birth, COUNT(*) FROM person GROUP BY country_of_birth HAVING COUNT(*) > 5 ORDER BY country_of_birth; 
+
+MAX, MIN, AVERAGE
+
+SELECT MAX(price) FROM car;
+SELECT MIN(price) FROM car;
+SELECT AVG(price) FROM car;
+SELECT ROUND(AVG(price)) FROM car;
+SELECT make, model, MAX(price) FROM car GROUP BY make, model;
+SELECT make, model, MIN(price) FROM car GROUP BY make, model;
+SELECT make, MAX(price) FROM car GROUP BY make;
+SELECT make, MIN(price) FROM car GROUP BY make;
+SELECT make, AVG(price) FROM car GROUP BY make;
+SELECT make, ROUND(AVG(price)) FROM car GROUP BY make;
+
+SUM
+
+SELECT SUM(price) FROM car;
+SELECT make, SUM(price) FROM car GROUP BY make;
+
+BASICS OF ARITHMETIC OPERATORS
+
+SELECT 10 + 2;
+SELECT 10 - 2;
+SELECT 10 * 2;
+SELECT 10 * 2 + 8;
+SELECT 10 / 2;
+SELECT 10 ^2;
+SELECT 10 ^3;
+SELECT 5!;
+SELECT 10 % 3;
+
+ARITHMETIC OPERATORS ROUND
+
+SELECT id, make, model, price, ROUND(price * .10, 2) FROM car;
+SELECT id, make, model, price, ROUND(price * .10, 2) ROUND(price - (price * .10) FROM car;
