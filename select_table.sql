@@ -111,3 +111,47 @@ SELECT id, make, model, price, ROUND(price * .10, 2) ROUND(price - (price * .10)
 ALIAS
 
 SELECT id, make, model, price AS original_price, ROUND(price * .10, 2) AS ten_percent_value, ROUND(price - (price * .10) AS discount_after_ten_percent  FROM car;
+
+COALESCE
+
+SELECT COALESCE(1);
+SELECT COALESCE(1) AS number;
+SELECT COALESCE(null, 2) AS number;
+SELECT COALESCE(null, null, 1, 10) AS number;
+SELECT COALESCE(email, 'Email not provided') FROM person;
+
+NULLIF
+
+SELECT NULLIF(10, 10);
+SELECT NULLIF(10, 19);
+SELECT 10 / NULLIF(2, 9);
+SELECT 10 / NULLIF(0, 0);
+SELECT COALESCE(10 / NULLIF(0, 0), 0);
+
+TIMESTAMP and DATE
+
+SELECT NOW();
+SELECT NOW()::DATE;
+SELECT NOW()::TIME;
+
+ADDING AND SUBSTRACTING with DATE
+
+SELECT NOW(): - INTERVAL '10 YEARS';
+SELECT NOW(): - INTERVAL '10 MONTHS';
+SELECT NOW(): - INTERVAL '10 DAY';
+SELECT NOW(): - INTERVAL '10 DAYS';
+SELECT NOW(): + INTERVAL '10 DAYS';
+SELECT NOW()::DATE + INTERVAL '10 MONTHS';
+SELECT NOW()::DATE - INTERVAL '10 MONTHS')::DATE;
+
+EXTRACTING FIELDS from TIMESTAMP
+
+SELECT EXTRACT(YEARS FROM NOW());
+SELECT EXTRACT(MONTHS FROM NOW());
+SELECT EXTRACT(DAY FROM NOW());
+SELECT EXTRACT(DOW FROM NOW());
+SELECT EXTRACT(CENTURY FROM NOW());
+
+AGE FUNCTION
+
+SELECT first_name, last_name, gender, country_of_birth, date_of_birth, AGE(NOW(), date_of_birth) AS age FROM person;
