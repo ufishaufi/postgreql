@@ -169,3 +169,4 @@ ALTER TABLE person ADD UNIQUE(email);
 CHECK CONSTRAINT
 
 ALTER TABLE person ADD CONSTRAINT gender_constraint CHECK(gender= 'female' OR gender = 'Male');
+DELETE FROM person WHERE gender = 'Hello';
