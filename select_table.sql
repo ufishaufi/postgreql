@@ -155,3 +155,17 @@ SELECT EXTRACT(CENTURY FROM NOW());
 AGE FUNCTION
 
 SELECT first_name, last_name, gender, country_of_birth, date_of_birth, AGE(NOW(), date_of_birth) AS age FROM person;
+
+PRIMARY KEY
+
+ALTER TABLE person ADD PRIMARY KEY(column1, column2);
+ALTER TABLE person ADD PRIMARY KEY(id);
+
+UNIQUE CONSTRAINT
+
+ALTER TABLE person ADD CONSTRAINT unique_email_address UNIQUE(email);
+ALTER TABLE person ADD UNIQUE(email);
+
+CHECK CONSTRAINT
+
+ALTER TABLE person ADD CONSTRAINT gender_constraint CHECK(gender= 'female' OR gender = 'Male');
