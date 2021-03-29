@@ -170,3 +170,25 @@ CHECK CONSTRAINT
 
 ALTER TABLE person ADD CONSTRAINT gender_constraint CHECK(gender= 'female' OR gender = 'Male');
 DELETE FROM person WHERE gender = 'Hello';
+
+HOW TO DELETE RECORDS
+
+DELETE FROM person;
+DELETE FROM person WHERE id = 1011;
+DELETE FROM person WHERE gender = 'Female' AND country_of_birth = 'England';
+
+HOW TO UPDATE RECORDS
+
+UPDATE person SET email = 'ammar@gmail.com' WHERE id = 2011;
+UPDATE person SET first_name = 'Omar', last_name = 'Montana', email = 'omar.montana@gmail.com' WHERE id = 2011;
+
+ON CONFLICT DO NOTHING
+
+INSERT INTO person (id, first_name, last_name, gender, email, date_of_birth, country_of_birth) VALUES (2017, 'Russ', 'Ruddoch', 'Male', 'rruddoch7@hhs.gov', DATE '1952-09-25', 'Norway') ON CONFLICT (id) DO NOTHING;
+
+UPSERT
+
+INSERT INTO person (id, first_name, last_name, gender, email, date_of_birth, country_of_birth) VALUES (2017, 'Russ', 'Ruddoch', 'Male', 'rruddoch7@hhs.gov', DATE '1952-09-25', 'Norway') ON CONFLICT (id) DO UPDATE SET email = EXCLUDED.email;
+INSERT INTO person (id, first_name, last_name, gender, email, date_of_birth, country_of_birth) VALUES (2017, 'Russ', 'Ruddoch', 'Male', 'rruddoch7@hhs.gov.uk', DATE '1952-09-25', 'Norway') ON CONFLICT (id) DO UPDATE SET email = EXCLUDED.email;
+INSERT INTO person (id, first_name, last_name, gender, email, date_of_birth, country_of_birth) VALUES (2017, 'Russel', 'Rudi', 'Male', 'rruddoch7@hhs.gov.uk', DATE '1952-09-25', 'Norway') ON CONFLICT (id) DO UPDATE SET email = EXCLUDED.email, last_name = EXCLUDED.last_name, first_name = EXCLUDED.first_name;
+
