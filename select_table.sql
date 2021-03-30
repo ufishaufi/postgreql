@@ -192,3 +192,12 @@ INSERT INTO person (id, first_name, last_name, gender, email, date_of_birth, cou
 INSERT INTO person (id, first_name, last_name, gender, email, date_of_birth, country_of_birth) VALUES (2017, 'Russ', 'Ruddoch', 'Male', 'rruddoch7@hhs.gov.uk', DATE '1952-09-25', 'Norway') ON CONFLICT (id) DO UPDATE SET email = EXCLUDED.email;
 INSERT INTO person (id, first_name, last_name, gender, email, date_of_birth, country_of_birth) VALUES (2017, 'Russel', 'Rudi', 'Male', 'rruddoch7@hhs.gov.uk', DATE '1952-09-25', 'Norway') ON CONFLICT (id) DO UPDATE SET email = EXCLUDED.email, last_name = EXCLUDED.last_name, first_name = EXCLUDED.first_name;
 
+WHAT IS A RELATIONSHIP / FOREIGN KEYS AND ADDING RELATIONSHIP BETWEEN TABLES
+
+CREATE TABLE person (id BIGSERIAL NOT NULL PRIMARY KEY, first_name VARCHAR(50) NOT NULL, last_name VARCHAR(50) NOT NULL, gender VARCHAR(7) NOT NULL, email VARCHAR(100), date_of_birth DATE NOT NULL, country_of_birth VARCHAR(50) NOT NULL, car_id BIGINT REFERENCES car (id) UNIQUE(car_id));
+
+UPDATING FOREIGN KEYS COlUMNS
+
+UPDATE person SET car_id = 2 WHERE id = 1;
+  
+
