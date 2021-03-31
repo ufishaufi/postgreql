@@ -200,4 +200,26 @@ UPDATING FOREIGN KEYS COlUMNS
 
 UPDATE person SET car_id = 2 WHERE id = 1;
   
+INNER JOINS
 
+SELECT * FROM person;
+SELECT * FROM car;
+SELECT * FROM person JOIN car ON person.car_id = car_id;
+\x
+SELECT * FROM person JOIN car ON person.car_id = car_id;
+SELECT * FROM person.first_name, car.make, car.model, car.price FROM person JOIN car ON person.car_id = car.id;
+\x
+
+LEFT JOINS
+
+SELECT * FROM person LEFT JOIN car ON car_id = person.car_id;
+SELECT * FROM person LEFT JOIN car ON car_id = person.car_id WHERE car.* IS NULL;
+
+RIGHT JOINS
+
+SELECT * FROM person RIGHT JOIN car ON car_id = person.car_id;
+SELECT * FROM person RIGHT JOIN car ON car_id = person.car_id WHERE car.* IS NULL;
+
+FULL JOINS
+
+SELECT * FROM person FULL JOIN car ON car_id = person.car_id WHERE car.* IS NULL;
