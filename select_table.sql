@@ -223,3 +223,18 @@ SELECT * FROM person RIGHT JOIN car ON car_id = person.car_id WHERE car.* IS NUL
 FULL JOINS
 
 SELECT * FROM person FULL JOIN car ON car_id = person.car_id WHERE car.* IS NULL;
+
+DELETING RECORDS with FOREIGN KEYS
+
+UPDATE person SET car_id = 13 WHERE id = 9000;
+DELETE FROM person WHERE id = 9000;
+DELETE FROM car WHERE id = 13;
+
+EXPORTING QUERY RESULTS TO CSV
+
+\?
+copy(SELECT * FROM person LEFT JOIN car ON car_id = person.car_id) TO '/Users/shaufi/Desktop/result.csv' DELIMETER ',' CSV HEADER;
+
+SERIAL & SEQUENCES
+
+
